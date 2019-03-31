@@ -1,7 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {fetchApartmentsList} from './../actions/apartmentsListActions';
-import ApartmentTileView from "./ApartmentTileView";
+import PropTypes from 'prop-types';
+import ApartmentTileView from './ApartmentTileView';
 
 class HomeView extends React.Component {
   componentWillMount() {
@@ -9,27 +8,28 @@ class HomeView extends React.Component {
   }
 
   render() {
-    let {apartmentsList} = this.props;
+    const { apartmentsList } = this.props;
     if (!Object.keys(apartmentsList).length) {
-        return <div>Loading...</div>
+      return <div>Loading...</div>;
     }
 
     return (
       <div className="container-list container-lg clearfix">
         <div className="col-12 float-left">
           <div className="view-apartment-list">
-            {apartmentsList.items.map((item, index) => (
-                <ApartmentTileView key={index} apartment={item} />
+            {apartmentsList.items.map(item => (
+              <ApartmentTileView key={item._id} apartment={item} />
             ))}
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({
-  apartmentsList: state.apartmentsList.apartments
-});
+HomeView.propTypes = {
+  apartmentsList: PropTypes.object.isRequired,
+  fetchApartmentsList: PropTypes.func.isRequired,
+};
 
-export default connect(mapStateToProps, {fetchApartmentsList})(HomeView)
+export default HomeView;
