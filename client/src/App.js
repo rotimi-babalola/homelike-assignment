@@ -2,11 +2,10 @@ import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import HomeView from './views/HomeView';
+import HomeView from './containers/HomeView';
 import client from './ApolloClient';
 import store from './store';
-// eslint-disable-next-line import/no-named-as-default
-import ApartmentView from './views/ApartmentView';
+import ApartmentView from './containers/ApartmentView';
 
 import '../public/bootstrap-grid.min.css';
 import '../public/css/main.css';

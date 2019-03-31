@@ -1,4 +1,7 @@
-import { FETCH_APARTMENTS_LIST } from '../actions/types';
+import {
+  FETCH_APARTMENTS_LIST,
+  FETCH_APARTMENTS_LIST_ERROR,
+} from '../actions/types';
 
 const initialState = {
   apartments: {},
@@ -10,6 +13,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         apartments: action.payload.apartments,
+      };
+    case FETCH_APARTMENTS_LIST_ERROR:
+      return {
+        ...state,
+        error: action.payload.error,
       };
     default:
       return state;

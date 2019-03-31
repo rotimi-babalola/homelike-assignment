@@ -1,16 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchApartment } from '../actions/apartmentActions';
 import ApartmentAmentityView from './ApartmentAmentityView';
 
-export class ApartmentView extends React.Component {
+class ApartmentView extends React.Component {
   componentWillMount() {
     const {
       match: { params },
     } = this.props;
     const { apartmentId } = params;
-    console.log('hello >>>>');
     this.props.fetchApartment(apartmentId);
   }
 
@@ -77,21 +75,7 @@ export class ApartmentView extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  apartment: state.apartmentItem.apartment,
-});
-
-// const mapDispatchToProps = dispatch => ({
-//   fetchApartment: () => {
-//     dispatch(fetchApartment);
-//   },
-// });
-
-export default connect(
-  mapStateToProps,
-  // mapDispatchToProps,
-  { fetchApartment },
-)(ApartmentView);
+export default ApartmentView;
 
 ApartmentView.propTypes = {
   match: PropTypes.object.isRequired,

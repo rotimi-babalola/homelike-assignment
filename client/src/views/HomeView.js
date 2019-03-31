@@ -1,7 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchApartmentsList } from '../actions/apartmentsListActions';
 import ApartmentTileView from './ApartmentTileView';
 
 class HomeView extends React.Component {
@@ -29,16 +27,9 @@ class HomeView extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  apartmentsList: state.apartmentsList.apartments,
-});
-
-export default connect(
-  mapStateToProps,
-  { fetchApartmentsList },
-)(HomeView);
-
 HomeView.propTypes = {
   apartmentsList: PropTypes.object.isRequired,
   fetchApartmentsList: PropTypes.func.isRequired,
 };
+
+export default HomeView;

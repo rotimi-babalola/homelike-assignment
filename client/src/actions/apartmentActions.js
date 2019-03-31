@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { FETCH_APARTMENT } from './types';
+import { FETCH_APARTMENT, FETCH_APARTMENT_ERROR } from './types';
 import client from '../ApolloClient';
 
 export const fetchApartment = _id => dispatch => {
@@ -37,7 +37,10 @@ export const fetchApartment = _id => dispatch => {
         payload: apartment.data,
       }),
     )
-    .catch(error => {
-      console.log(error, 'error >>>');
-    });
+    .catch(error =>
+      dispatch({
+        type: FETCH_APARTMENT_ERROR,
+        payload: error,
+      }),
+    );
 };
