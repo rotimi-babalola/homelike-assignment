@@ -18,9 +18,8 @@ const App = () => (
         <Switch>
           <Route exact path="/" component={HomeView} />
           <Route
-            exact
             path="/apartments/:apartmentId"
-            component={ApartmentView}
+            render={props => <ApartmentView {...props} />}
           />
         </Switch>
       </Router>

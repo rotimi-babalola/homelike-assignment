@@ -1,11 +1,9 @@
-/* eslint-disable react/jsx-no-target-blank */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ApartmentAmentityView from './ApartmentAmentityView';
 
 const ApartmentTileView = ({ apartment }) => {
-  const url = `/apartments/${apartment._id}`;
   const image = `http://localhost:5000/images/apartments/${
     apartment.images[0]
   }`;
@@ -13,7 +11,7 @@ const ApartmentTileView = ({ apartment }) => {
   return (
     <div className="view-apartment-item">
       <div className="view-apartment-item-content">
-        <Link to={url}>
+        <Link to={`/apartments/${apartment._id}`} target="_blank">
           <div className="_3im4pDXrDfzNRT2AlvLfD6">
             <div className="listing-image">
               <div
