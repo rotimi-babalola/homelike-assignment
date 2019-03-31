@@ -39,6 +39,6 @@ export default connect(
 )(HomeView);
 
 HomeView.propTypes = {
-  apartmentsList: PropTypes.array.isRequired,
+  apartmentsList: PropTypes.object.isRequired,
   fetchApartmentsList: PropTypes.func.isRequired,
 };
