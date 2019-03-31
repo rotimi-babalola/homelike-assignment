@@ -36,5 +36,8 @@ export const fetchApartment = _id => dispatch => {
         type: FETCH_APARTMENT,
         payload: apartment.data,
       }),
-    );
+    )
+    .catch(error => {
+      console.log(error, 'error >>>');
+    });
 };

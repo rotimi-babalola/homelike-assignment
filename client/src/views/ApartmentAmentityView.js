@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { uniqueId } from 'lodash';
 
 export default class ApartmentAmentityView extends React.Component {
   render() {
@@ -8,7 +9,7 @@ export default class ApartmentAmentityView extends React.Component {
     apartment.amenities.forEach((item, index) => {
       if (index < limit) {
         amentities.push(
-          <span className="_1h9l4w0vvX6d56ZnJ3NLod">
+          <span className="_1h9l4w0vvX6d56ZnJ3NLod" key={uniqueId()}>
             <i />
             <span>{item}</span>
           </span>,
@@ -21,5 +22,5 @@ export default class ApartmentAmentityView extends React.Component {
 
 ApartmentAmentityView.propTypes = {
   apartment: PropTypes.object.isRequired,
-  limit: PropTypes.number,
+  limit: PropTypes.string,
 };

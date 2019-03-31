@@ -10,6 +10,7 @@ export class ApartmentView extends React.Component {
       match: { params },
     } = this.props;
     const { apartmentId } = params;
+    console.log('hello >>>>');
     this.props.fetchApartment(apartmentId);
   }
 
@@ -76,17 +77,24 @@ export class ApartmentView extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  apartment: state.apartmentItem.apartment,
+});
+
+// const mapDispatchToProps = dispatch => ({
+//   fetchApartment: () => {
+//     dispatch(fetchApartment);
+//   },
+// });
+
+export default connect(
+  mapStateToProps,
+  // mapDispatchToProps,
+  { fetchApartment },
+)(ApartmentView);
+
 ApartmentView.propTypes = {
   match: PropTypes.object.isRequired,
   apartment: PropTypes.object.isRequired,
   fetchApartment: PropTypes.func.isRequired,
 };
-
-const mapStateToProps = state => ({
-  apartment: state.apartmentItem.apartment,
-});
-
-export default connect(
-  mapStateToProps,
-  { fetchApartment },
-)(ApartmentView);

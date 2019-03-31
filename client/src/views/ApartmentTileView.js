@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import ApartmentAmentityView from './ApartmentAmentityView';
 
 const ApartmentTileView = ({ apartment }) => {
@@ -12,7 +13,7 @@ const ApartmentTileView = ({ apartment }) => {
   return (
     <div className="view-apartment-item">
       <div className="view-apartment-item-content">
-        <a target="_blank" href={url}>
+        <Link to={url}>
           <div className="_3im4pDXrDfzNRT2AlvLfD6">
             <div className="listing-image">
               <div
@@ -50,7 +51,7 @@ const ApartmentTileView = ({ apartment }) => {
               </div>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   );
