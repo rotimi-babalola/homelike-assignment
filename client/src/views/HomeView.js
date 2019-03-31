@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchApartmentsList } from './../actions/apartmentsListActions';
+import PropTypes from 'prop-types';
+import { fetchApartmentsList } from '../actions/apartmentsListActions';
 import ApartmentTileView from './ApartmentTileView';
 
 class HomeView extends React.Component {
@@ -9,7 +10,7 @@ class HomeView extends React.Component {
   }
 
   render() {
-    let { apartmentsList } = this.props;
+    const { apartmentsList } = this.props;
     if (!Object.keys(apartmentsList).length) {
       return <div>Loading...</div>;
     }
@@ -34,5 +35,10 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchApartmentsList }
+  { fetchApartmentsList },
 )(HomeView);
+
+HomeView.propTypes = {
+  apartmentsList: PropTypes.array.isRequired,
+  fetchApartmentsList: PropTypes.func.isRequired,
+};
