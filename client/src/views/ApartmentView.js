@@ -49,6 +49,11 @@ class ApartmentView extends React.Component {
                     <div className="listing-details">
                       <div className="_3-hUUH6d0vGND3vUzaybD0 Lsdn2hC-tehVod76x4HzK">
                         <span className="text-truncate text-first-capitalize _1NES5HH5UNUjUVK5_-d-AG">
+                          {`Owner email: ${apartment.owner.email}`}
+                        </span>
+                      </div>
+                      <div className="_3-hUUH6d0vGND3vUzaybD0 Lsdn2hC-tehVod76x4HzK">
+                        <span className="text-truncate text-first-capitalize _1NES5HH5UNUjUVK5_-d-AG">
                           {apartment.title}
                         </span>
                       </div>
