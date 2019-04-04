@@ -27,12 +27,12 @@ export const fetchApartmentsList = () => dispatch => {
         }
       `,
     })
-    .then(apartments =>
+    .then(apartments => {
       dispatch({
         type: FETCH_APARTMENTS_LIST,
         payload: apartments.data,
-      }),
-    )
+      });
+    })
     .catch(error => {
       dispatch({
         type: FETCH_APARTMENTS_LIST_ERROR,

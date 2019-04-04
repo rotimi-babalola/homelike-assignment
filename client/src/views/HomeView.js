@@ -5,6 +5,7 @@ import ApartmentTileView from './ApartmentTileView';
 class HomeView extends React.Component {
   componentWillMount() {
     this.props.fetchApartmentsList();
+    this.props.fetchLocations();
   }
 
   render() {
@@ -30,6 +31,7 @@ class HomeView extends React.Component {
 HomeView.propTypes = {
   apartmentsList: PropTypes.object.isRequired,
   fetchApartmentsList: PropTypes.func.isRequired,
+  fetchLocations: PropTypes.func.isRequired,
 };
 
 export default HomeView;
