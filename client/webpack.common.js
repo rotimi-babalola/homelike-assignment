@@ -11,6 +11,9 @@ module.exports = {
   resolve: {
     mainFields: ['browser', 'main', 'module'],
     extensions: ['.jsx', '.js'],
+    alias: {
+      '<views>': path.resolve(__dirname, './src/views'),
+    },
   },
   plugins: [
     new webpack.ProgressPlugin(),
