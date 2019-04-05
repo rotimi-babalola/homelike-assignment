@@ -20,6 +20,7 @@ const App = () => (
             path="/apartments/:apartmentId"
             render={props => <ApartmentView {...props} />}
           />
+          <Route exact path="/locations" component={ApartmentView} />
         </Switch>
       </Router>
     </Provider>

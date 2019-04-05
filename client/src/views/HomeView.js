@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ApartmentTileView from './ApartmentTileView';
+import Header from './Header';
 
 class HomeView extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchApartmentsList();
     this.props.fetchLocations();
   }
@@ -15,15 +16,18 @@ class HomeView extends React.Component {
     }
 
     return (
-      <div className="container-list container-lg clearfix">
-        <div className="col-12 float-left">
-          <div className="view-apartment-list">
-            {apartmentsList.items.map(item => (
-              <ApartmentTileView key={item._id} apartment={item} />
-            ))}
+      <React.Fragment>
+        <Header />
+        <div className="container-list container-lg clearfix">
+          <div className="col-12 float-left">
+            <div className="view-apartment-list">
+              {apartmentsList.items.map(item => (
+                <ApartmentTileView key={item._id} apartment={item} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
