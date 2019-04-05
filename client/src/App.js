@@ -1,11 +1,11 @@
+/* eslint-disable object-curly-newline */
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import HomeView from './containers/HomeView';
 import client from './ApolloClient';
 import store from './store';
-import ApartmentView from './containers/ApartmentView';
+import routes from './routes';
 
 import '../public/bootstrap-grid.min.css';
 import '../public/css/main.css';
@@ -15,12 +15,9 @@ const App = () => (
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route exact path="/" component={HomeView} />
-          <Route
-            path="/apartments/:apartmentId"
-            render={props => <ApartmentView {...props} />}
-          />
-          <Route exact path="/locations" component={ApartmentView} />
+          {routes.default.map(({ exact, path, component, id }) => (
+            <Route key={id} exact={exact} path={path} component={component} />
+          ))}
         </Switch>
       </Router>
     </Provider>
