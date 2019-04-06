@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Dropdown from './Dropdown';
 
 const Header = props => {
   const [query, setQuery] = useState('');
@@ -15,7 +16,7 @@ const Header = props => {
       return alert("We don't have data for apartments in this location");
     }
     const locationId = foundLocation[0]._id;
-    props.history.push(`/search?query=${searchQuery}&locationId=${locationId}`);
+    props.history.push(`/search/${locationId}`);
   };
 
   return (
@@ -27,20 +28,14 @@ const Header = props => {
             alt="Homelike logo"
           />
         </a>
-        <div className="dropdown">
-          <button type="button" className="dropbtn">
-            Locations
-            <i className="fa fa-caret-down" />
-          </button>
-          <div className="dropdown-content">
-            {props.locations.length &&
-              props.locations.map(location => (
-                <Link to={`/locations/${location._id}`} key={location._id}>
-                  {location.title}
-                </Link>
-              ))}
-          </div>
-        </div>
+        <Dropdown title="Locations">
+          {props.locations.length &&
+            props.locations.map(location => (
+              <Link to={`/locations/${location._id}`} key={location._id}>
+                {location.title}
+              </Link>
+            ))}
+        </Dropdown>
         <div className="search">
           <input
             type="text"

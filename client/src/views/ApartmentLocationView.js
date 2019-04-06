@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import ApartmentTileView from './ApartmentTileView';
 
@@ -94,4 +94,4 @@ ApartmentLocationView.propTypes = {
   error: PropTypes.object,
 };
 
-export default ApartmentLocationView;
+export default withRouter(ApartmentLocationView);

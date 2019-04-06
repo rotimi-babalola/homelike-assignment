@@ -25,7 +25,7 @@ const routes = {
     },
     {
       exact: true,
-      path: '/search',
+      path: '/search/:locationId',
       component: SearchApartmentView,
       id: 4,
     },

@@ -57,6 +57,7 @@ export const fetchApartmentsListForLocation = locationId => dispatch => {
             size
             price
             amenities
+            images
             details {
               rooms
               bedrooms
