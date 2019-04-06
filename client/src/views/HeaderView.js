@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const Header = () => (
+const Header = props => (
   <header className="header">
     <div className="container-lg header-content">
       <a href="/" data-reactid="7">
@@ -10,11 +11,25 @@ const Header = () => (
           alt="Homelike logo"
         />
       </a>
-      <Link to="/locations" className="location-text">
-        Locations
-      </Link>
+      <div className="dropdown">
+        <button type="button" className="dropbtn">
+          Locations
+          <i className="fa fa-caret-down" />
+        </button>
+        <div className="dropdown-content">
+          {props.locations.map(el => (
+            <Link to="/locations" target="_blank" key={el._id}>
+              {el.title}
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
   </header>
 );
+
+Header.propTypes = {
+  locations: PropTypes.array,
+};
 
 export default Header;

@@ -1,5 +1,9 @@
 import React from 'react';
 
-const LocationView = () => <h1>Locations</h1>;
+const LocationView = () => (
+  <div className="col-12">
+    <div>ldl</div>
+  </div>
+);
 
 export default LocationView;

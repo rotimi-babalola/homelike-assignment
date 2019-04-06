@@ -8,7 +8,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LOCATIONS:
-      return [...state.locations, action.payload.items];
+      return [...state.locations, ...action.payload.items];
     case FETCH_LOCATIONS_ERROR:
       return {
         ...state,

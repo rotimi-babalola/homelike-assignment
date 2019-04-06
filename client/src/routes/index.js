@@ -1,7 +1,6 @@
 import HomeView from '../containers/HomeView';
 import ApartmentView from '../containers/ApartmentView';
-// eslint-disable-next-line import/no-unresolved
-import LocationView from '<views>/LocationView';
+import LocationView from '../views/LocationView';
 
 const routes = {
   default: [

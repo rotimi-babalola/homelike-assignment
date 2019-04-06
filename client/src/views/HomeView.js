@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ApartmentTileView from './ApartmentTileView';
-import Header from './HeaderView';
+import Header from '../containers/HeaderView';
 
 class HomeView extends React.Component {
   componentDidMount() {
