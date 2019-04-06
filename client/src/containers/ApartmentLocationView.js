@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
-import LocationView from '../views/LocationView';
+import ApartmentLocationView from '../views/ApartmentLocationView';
 import { fetchApartmentsListForLocation } from '../actions/apartmentsListActions';
 import { fetchLocations } from '../actions/locationActions';
 
 const mapStateToProps = state => ({
   apartmentsForLocation: state.apartmentsList.apartmentsForLocation || {},
   locations: state.locations.data || [],
+  error: state.error,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -17,9 +18,9 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const LocationViewContainer = connect(
+const ApartmentLocationViewContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(LocationView);
+)(ApartmentLocationView);
 
-export default LocationViewContainer;
+export default ApartmentLocationViewContainer;
