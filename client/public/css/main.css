@@ -302,7 +302,7 @@ img {
 
 .header-content {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: row;
   align-items: flex-end;
 }
@@ -315,9 +315,8 @@ img {
 
 /* The dropdown container */
 .dropdown {
-  float: left;
   overflow: hidden;
-  margin-left: 20px;
+  margin-right: 400px;
 }
 
 /* Dropdown button */
@@ -376,4 +375,15 @@ img {
 .loader {
   margin-top: 30%;
   text-align: center;
+}
+
+.search input[type=text] {
+  height: 30px;
+  width: 250px;
+  font-size: 20px;
+}
+
+.submit {
+  height: 30px;
+  width: 40px;
 }
