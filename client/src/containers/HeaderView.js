@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import HeaderView from '../views/HeaderView';
 
 const mapStateToProps = state => ({
-  locations: state.locations.data,
+  locations: state.locations.data || [],
 });
 
 const HeaderViewContainer = connect(

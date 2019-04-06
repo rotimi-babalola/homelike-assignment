@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 import ApartmentTileView from './ApartmentTileView';
 
 class LocationView extends React.Component {
@@ -15,6 +16,9 @@ class LocationView extends React.Component {
     } = this.props;
     const { locationId } = params;
     this.props.fetchApartmentsListForLocation(locationId);
+    if (!this.props.locations.length) {
+      this.props.fetchLocations();
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -28,6 +32,10 @@ class LocationView extends React.Component {
       const { locationId } = params;
       this.props.fetchApartmentsListForLocation(locationId);
     }
+
+    if (!this.props.locations.length) {
+      this.props.fetchLocations();
+    }
   }
 
   getLocationName() {
@@ -35,6 +43,9 @@ class LocationView extends React.Component {
       match: { params },
     } = this.props;
     const { locationId } = params;
+    if (!this.props.locations.length) {
+      return 'Unable to get location';
+    }
     const [currentLocation] = this.props.locations.filter(
       location => location._id === locationId,
     );
@@ -44,7 +55,11 @@ class LocationView extends React.Component {
   render() {
     const { apartmentsForLocation } = this.props;
     if (!Object.keys(apartmentsForLocation).length) {
-      return <div>Loading...</div>;
+      return (
+        <div className="loader">
+          <Loader type="Oval" color="#00BFFF" height="100" width="100" />
+        </div>
+      );
     }
     return (
       <React.Fragment>
@@ -58,7 +73,9 @@ class LocationView extends React.Component {
             </div>
           </div>
         </div>
-        <Link to="/">Go home</Link>
+        <Link to="/" className="go-home">
+          Go home
+        </Link>
       </React.Fragment>
     );
   }
@@ -67,6 +84,7 @@ class LocationView extends React.Component {
 LocationView.propTypes = {
   match: PropTypes.object.isRequired,
   fetchApartmentsListForLocation: PropTypes.func.isRequired,
+  fetchLocations: PropTypes.func.isRequired,
   apartmentsForLocation: PropTypes.object.isRequired,
   locations: PropTypes.array,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import ApartmentTileView from './ApartmentTileView';
 import Header from '../containers/HeaderView';
 
@@ -12,7 +13,11 @@ class HomeView extends React.Component {
   render() {
     const { apartmentsList } = this.props;
     if (!Object.keys(apartmentsList).length) {
-      return <div>Loading...</div>;
+      return (
+        <div className="loader">
+          <Loader type="Oval" color="#00BFFF" height="100" width="100" />
+        </div>
+      );
     }
 
     return (

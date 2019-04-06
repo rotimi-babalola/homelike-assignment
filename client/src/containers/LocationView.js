@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import LocationView from '../views/LocationView';
 import { fetchApartmentsListForLocation } from '../actions/apartmentsListActions';
+import { fetchLocations } from '../actions/locationActions';
 
 const mapStateToProps = state => ({
   apartmentsForLocation: state.apartmentsList.apartmentsForLocation || {},
@@ -10,6 +11,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchApartmentsListForLocation: locationId => {
     dispatch(fetchApartmentsListForLocation(locationId));
+  },
+  fetchLocations: () => {
+    dispatch(fetchLocations());
   },
 });
 
