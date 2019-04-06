@@ -46,12 +46,12 @@ export const fetchApartmentsList = () => dispatch => {
     });
 };
 
-export const fetchApartmentsListbyLocation = location => dispatch => {
+export const fetchApartmentsListForLocation = locationId => dispatch => {
   client
     .query({
       query: gql`
         {
-          apartments(active: true, location: "${location._id}") {
+          apartments(active: true, location: "${locationId}") {
             items {
               _id
               owner {
@@ -74,7 +74,7 @@ export const fetchApartmentsListbyLocation = location => dispatch => {
     .then(apartments => {
       dispatch({
         type: FETCH_APARTMENTS_LOCATION_LIST,
-        payload: { data: apartments.data, location },
+        payload: { data: apartments.data, locationId },
       });
     })
     .catch(error => {

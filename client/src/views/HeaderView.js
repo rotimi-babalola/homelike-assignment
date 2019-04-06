@@ -17,11 +17,12 @@ const Header = props => (
           <i className="fa fa-caret-down" />
         </button>
         <div className="dropdown-content">
-          {props.locations.map(el => (
-            <Link to="/locations" target="_blank" key={el._id}>
-              {el.title}
-            </Link>
-          ))}
+          {props.locations.length &&
+            props.locations.map(location => (
+              <Link to={`/locations/${location._id}`} key={location._id}>
+                {location.title}
+              </Link>
+            ))}
         </div>
       </div>
     </div>

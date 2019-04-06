@@ -22,10 +22,11 @@ export const fetchLocations = () => dispatch => {
         payload: response.data.locations,
       });
     })
-    .catch(error =>
+    .catch(error => {
+      console.log(error, 'error locations >>>>');
       dispatch({
         type: FETCH_LOCATIONS_ERROR,
         payload: error,
-      }),
-    );
+      });
+    });
 };

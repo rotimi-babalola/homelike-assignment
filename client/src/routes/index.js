@@ -1,6 +1,6 @@
 import HomeView from '../containers/HomeView';
 import ApartmentView from '../containers/ApartmentView';
-import LocationView from '../views/LocationView';
+import LocationView from '../containers/LocationView';
 
 const routes = {
   default: [
@@ -18,7 +18,7 @@ const routes = {
     },
     {
       exact: true,
-      path: '/locations',
+      path: '/locations/:locationId',
       component: LocationView,
       id: 3,
     },
