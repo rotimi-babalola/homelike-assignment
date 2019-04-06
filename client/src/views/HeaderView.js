@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Header = props => {
@@ -8,14 +8,14 @@ const Header = props => {
   // eslint-disable-next-line consistent-return
   const search = searchQuery => {
     // check location in state to ensure it's valid
-    const foundLocation = props.locations.filter(location =>
-      location.title.toLowerCase().includes(searchQuery.toLowerCase()),
+    const foundLocation = props.locations.filter(
+      location => location.title.toLowerCase() === searchQuery.toLowerCase(),
     );
     if (foundLocation.length === 0) {
       return alert("We don't have data for apartments in this location");
     }
-    console.log('Out');
-    // dispatch action to search for location
+    const locationId = foundLocation[0]._id;
+    props.history.push(`/search?query=${searchQuery}&locationId=${locationId}`);
   };
 
   return (
@@ -64,6 +64,7 @@ const Header = props => {
 
 Header.propTypes = {
   locations: PropTypes.array,
+  history: PropTypes.object,
 };
 
-export default Header;
+export default withRouter(Header);
