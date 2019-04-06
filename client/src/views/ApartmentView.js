@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import ApartmentAmentityView from './ApartmentAmentityView';
 
 class ApartmentView extends React.Component {
@@ -14,7 +15,11 @@ class ApartmentView extends React.Component {
   render() {
     const { apartment } = this.props;
     if (!Object.keys(apartment).length) {
-      return <div>Loading...</div>;
+      return (
+        <div className="loader">
+          <Loader type="Oval" color="#00BFFF" height="100" width="100" />
+        </div>
+      );
     }
     const image = `http://localhost:5000/images/apartments/${
       apartment.images[0]
