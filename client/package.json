@@ -44,6 +44,7 @@
     "react-apollo": "^2.1.6",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.4.1",
+    "react-loader-spinner": "^2.3.0",
     "react-octicon": "^3.0.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
