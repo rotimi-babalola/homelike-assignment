@@ -131,7 +131,11 @@ class SearchApartmentView extends React.Component {
         return false;
       });
     }
-    if (!isEmpty(query.details) && filteredApartments.length) {
+    if (
+      !isEmpty(query.details) &&
+      atLeastOneKeyTrue(query.details) &&
+      filteredApartments.length
+    ) {
       filteredApartments = arr.filter(apartment => {
         for (const detail in query.details) {
           if (apartment.details[detail] === query.details[detail]) {
