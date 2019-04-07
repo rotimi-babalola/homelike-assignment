@@ -366,6 +366,10 @@ img {
   font-size: medium;
 }
 
+.fa.fa-user {
+  margin: 15px;
+}
+
 .go-home {
   text-align: center;
   display: block;
@@ -385,4 +389,14 @@ img {
 .submit {
   height: 30px;
   width: 40px;
+}
+
+.search-controls {
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-controls input {
+  padding: 15px;
+  font-size: 15px;
 }

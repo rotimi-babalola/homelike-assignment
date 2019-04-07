@@ -80,11 +80,6 @@ class SearchApartmentView extends React.Component {
       ? this.state.apartments.items
       : this.props.apartmentsForLocation.items;
     if (query.price) {
-      // filteredStuff(queryvalue, arr, querytype);
-      // filteredStuff(60, )
-
-      // const filteredStuff = (query, arr = []) =>
-      //   arr.filter(apartment => apartment[querytype] >= queryvalue);
       filteredApartments = arr.filter(
         apartment => Number(query.price) <= apartment.price,
       );

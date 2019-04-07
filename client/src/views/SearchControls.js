@@ -6,10 +6,7 @@ import Dropdown from './Dropdown';
 const details = ['Rooms', 'Bedrooms', 'Floor', 'Bathrooms'];
 
 const SearchControls = props => (
-  <div
-    className="search-controls"
-    style={{ display: 'flex', justifyContent: 'space-around' }}
-  >
+  <div className="search-controls">
     <input
       type="number"
       name="price"
@@ -18,18 +15,27 @@ const SearchControls = props => (
       min="0"
       size="100"
       onChange={evt => props.setPrice(evt.target.value)}
-      style={{ padding: '15px', fontSize: '15px' }}
     />
     <input
       type="number"
-      name=""
-      id=""
+      name="size"
+      id="size"
       placeholder="Enter Size"
       min="0"
       onChange={evt => props.setSize(evt.target.value)}
     />
-    <input type="text" name="" id="" placeholder="Enter amenities" />
-    <input type="text" name="" id="" placeholder="Enter services" />
+    <input
+      type="text"
+      name="amenities"
+      id="amenities"
+      placeholder="Enter amenities"
+    />
+    <input
+      type="text"
+      name="services"
+      id="services"
+      placeholder="Enter services"
+    />
     <Dropdown
       title="Details"
       style={{
@@ -37,12 +43,12 @@ const SearchControls = props => (
         display: 'block',
         textAlign: 'center',
         paddingTop: '10px',
-        flex: '0.3',
+        flex: '0.5',
       }}
     >
       {details.map(detail => (
         <div key={uniqueId()}>
-          <i className="fa fa-user mr-2" style={{ margin: '15px' }} />
+          <i className="fa fa-user mr-2" />
           {detail}
           <button type="button" className="">
             -
