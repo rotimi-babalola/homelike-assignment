@@ -19,7 +19,14 @@ const SearchControls = props => (
       size="100"
       onChange={evt => props.searchApartmentByPrice(evt.target.value)}
     />
-    <input type="number" name="" id="" placeholder="Enter Size" min="0" />
+    <input
+      type="number"
+      name=""
+      id=""
+      placeholder="Enter Size"
+      min="0"
+      onChange={evt => props.searchApartmentBySize(evt.target.value)}
+    />
     <input type="text" name="" id="" placeholder="Enter amenities" />
     <input type="text" name="" id="" placeholder="Enter services" />
     <Dropdown
@@ -45,6 +52,7 @@ const SearchControls = props => (
 
 SearchControls.propTypes = {
   searchApartmentByPrice: PropTypes.func,
+  searchApartmentBySize: PropTypes.func,
 };
 
 export default SearchControls;
