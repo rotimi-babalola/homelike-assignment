@@ -68,6 +68,7 @@ const SearchControls = props => {
           textAlign: 'center',
           paddingTop: '10px',
           flex: '0.5',
+          cursor: 'pointer',
         }}
         contentStyle={{ textAlign: 'left', width: '350px' }}
       >
@@ -82,7 +83,6 @@ const SearchControls = props => {
               name={detail.name}
               id={detail.name}
               disabled={disableButton(detailValue[detail.name])}
-              // disabled
               onClick={evt => {
                 setDetailValue({
                   ...detailValue,
