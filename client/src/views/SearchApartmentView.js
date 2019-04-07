@@ -81,6 +81,11 @@ class SearchApartmentView extends React.Component {
       ? this.state.filteredApartments.items
       : this.props.apartmentsForLocation.items;
     if (query.price) {
+      // filteredStuff(queryvalue, arr, querytype);
+      // filteredStuff(60, )
+
+      // const filteredStuff = (query, arr = []) =>
+      //   arr.filter(apartment => apartment[querytype] >= queryvalue);
       filteredApartments = arr.filter(
         apartment => Number(query.price) <= apartment.price,
       );
@@ -127,7 +132,6 @@ class SearchApartmentView extends React.Component {
   }
 
   render() {
-    console.log(this.state, '>>>>>>>>>>>>>>>>>>');
     const { apartmentsForLocation } = this.props;
     if (!Object.keys(apartmentsForLocation).length) {
       return (
@@ -146,8 +150,18 @@ class SearchApartmentView extends React.Component {
         <h1 style={{ marginLeft: '20px' }}>Search Page</h1>
         <SearchControls setPrice={this.setPrice} setSize={this.setSize} />
         <div className="container-list container-lg clearfix">
-          <h1>{`Search apartments in  ${this.getLocationName()}`}</h1>
-          <div className="col-8 float-left">{this.renderResults()}</div>
+          <h1
+            style={{
+              fontSize: '25px',
+              borderBottom: '1px #d3d3d3 solid',
+              paddingBottom: '6px',
+            }}
+          >
+            {`Search apartments in  ${this.getLocationName()}`}
+          </h1>
+          <div className="col-8 float-left" style={{ padding: '0' }}>
+            {this.renderResults()}
+          </div>
         </div>
       </div>
     );

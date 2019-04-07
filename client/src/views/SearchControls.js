@@ -18,6 +18,7 @@ const SearchControls = props => (
       min="0"
       size="100"
       onChange={evt => props.setPrice(evt.target.value)}
+      style={{ padding: '15px', fontSize: '15px' }}
     />
     <input
       type="number"
@@ -31,7 +32,13 @@ const SearchControls = props => (
     <input type="text" name="" id="" placeholder="Enter services" />
     <Dropdown
       title="Details"
-      style={{ backgroundColor: '#000', display: 'inline' }}
+      style={{
+        backgroundColor: '#000',
+        display: 'block',
+        textAlign: 'center',
+        paddingTop: '10px',
+        flex: '0.3',
+      }}
     >
       {details.map(detail => (
         <div key={uniqueId()}>
