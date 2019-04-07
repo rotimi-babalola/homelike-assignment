@@ -29,6 +29,7 @@ const SearchControls = props => (
       name="amenities"
       id="amenities"
       placeholder="Enter amenities"
+      onChange={evt => props.setAmenity(evt.target.value)}
     />
     <input
       type="text"
@@ -66,6 +67,7 @@ const SearchControls = props => (
 SearchControls.propTypes = {
   setPrice: PropTypes.func,
   setSize: PropTypes.func,
+  setAmenity: PropTypes.func,
 };
 
 export default SearchControls;

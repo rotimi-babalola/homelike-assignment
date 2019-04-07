@@ -23,6 +23,7 @@ class SearchApartmentView extends React.Component {
     this.renderResults = this.renderResults.bind(this);
     this.setSize = this.setSize.bind(this);
     this.filterApartments = this.filterApartments.bind(this);
+    this.setAmenity = this.setAmenity.bind(this);
   }
 
   componentDidMount() {
@@ -74,6 +75,12 @@ class SearchApartmentView extends React.Component {
     );
   }
 
+  setAmenity(amenity) {
+    this.setState({ query: { ...this.state.query, amenity } }, () =>
+      this.filterApartments(this.state.query),
+    );
+  }
+
   filterApartments(query) {
     let filteredApartments = this.state.apartments.items;
     const arr = this.state.apartments.items.length
@@ -88,6 +95,17 @@ class SearchApartmentView extends React.Component {
       filteredApartments = arr.filter(
         apartment => Number(query.size) <= apartment.size,
       );
+    }
+    if (query.amenity) {
+      filteredApartments = arr.filter(apartment => {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const amenity of apartment.amenities) {
+          if (amenity.includes(query.amenity)) {
+            return true;
+          }
+        }
+        return false;
+      });
     }
     this.setState({
       apartments: {
@@ -142,7 +160,11 @@ class SearchApartmentView extends React.Component {
     return (
       <div>
         <h1 style={{ marginLeft: '20px' }}>Search Page</h1>
-        <SearchControls setPrice={this.setPrice} setSize={this.setSize} />
+        <SearchControls
+          setPrice={this.setPrice}
+          setSize={this.setSize}
+          setAmenity={this.setAmenity}
+        />
         <div className="container-list container-lg clearfix">
           <h1
             style={{
