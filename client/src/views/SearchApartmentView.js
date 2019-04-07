@@ -11,7 +11,7 @@ class SearchApartmentView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filteredApartments: {
+      apartments: {
         items: [],
         filteredItems: [],
       },
@@ -31,7 +31,6 @@ class SearchApartmentView extends React.Component {
         params: { locationId },
       },
     } = this.props;
-    // get all apartment
     this.props.fetchApartmentsListForLocation(locationId);
 
     this.props.fetchLocations();
@@ -41,7 +40,7 @@ class SearchApartmentView extends React.Component {
     if (prevProps.apartmentsForLocation !== this.props.apartmentsForLocation) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
-        filteredApartments: {
+        apartments: {
           items: this.props.apartmentsForLocation.items,
           filteredItems: this.props.apartmentsForLocation.items,
         },
@@ -76,9 +75,9 @@ class SearchApartmentView extends React.Component {
   }
 
   filterApartments(query) {
-    let filteredApartments = this.state.filteredApartments.items;
-    const arr = this.state.filteredApartments.items.length
-      ? this.state.filteredApartments.items
+    let filteredApartments = this.state.apartments.items;
+    const arr = this.state.apartments.items.length
+      ? this.state.apartments.items
       : this.props.apartmentsForLocation.items;
     if (query.price) {
       // filteredStuff(queryvalue, arr, querytype);
@@ -96,8 +95,8 @@ class SearchApartmentView extends React.Component {
       );
     }
     this.setState({
-      filteredApartments: {
-        ...this.state.filteredApartments,
+      apartments: {
+        ...this.state.apartments,
         filteredItems: filteredApartments,
       },
     });
@@ -105,7 +104,7 @@ class SearchApartmentView extends React.Component {
 
   renderResults() {
     if (
-      !this.state.filteredApartments.items.length &&
+      !this.state.apartments.items.length &&
       !atLeastOneKeyTrue(this.state.query)
     ) {
       return (
@@ -117,14 +116,14 @@ class SearchApartmentView extends React.Component {
       );
     }
     if (
-      !this.state.filteredApartments.filteredItems.length &&
+      !this.state.apartments.filteredItems.length &&
       atLeastOneKeyTrue(this.state.query)
     ) {
       return <div>No apartments found...</div>;
     }
     return (
       <div className="view-apartment-list">
-        {this.state.filteredApartments.filteredItems.map(item => (
+        {this.state.apartments.filteredItems.map(item => (
           <ApartmentTileView key={item._id} apartment={item} />
         ))}
       </div>
