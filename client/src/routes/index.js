@@ -1,7 +1,7 @@
 import HomeView from '../containers/HomeView';
 import ApartmentView from '../containers/ApartmentView';
 import ApartmentLocationView from '../containers/ApartmentLocationView';
-import SearchApartmentView from '../views/SearchApartmentView';
+import SearchApartmentView from '../containers/SearchApartmentView';
 
 const routes = {
   default: [

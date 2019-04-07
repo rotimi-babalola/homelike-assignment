@@ -1,21 +1,23 @@
 import React from 'react';
 import { uniqueId } from 'lodash';
+import PropTypes from 'prop-types';
 import Dropdown from './Dropdown';
 
 const details = ['Rooms', 'Bedrooms', 'Floor', 'Bathrooms'];
 
-const SearchControls = () => (
+const SearchControls = props => (
   <div
     className="search-controls"
     style={{ display: 'flex', justifyContent: 'space-around' }}
   >
     <input
       type="number"
-      name=""
-      id=""
+      name="price"
+      id="price"
       placeholder="Enter Price"
       min="0"
       size="100"
+      onChange={evt => props.searchApartmentByPrice(evt.target.value)}
     />
     <input type="number" name="" id="" placeholder="Enter Size" min="0" />
     <input type="text" name="" id="" placeholder="Enter amenities" />
@@ -40,5 +42,9 @@ const SearchControls = () => (
     </Dropdown>
   </div>
 );
+
+SearchControls.propTypes = {
+  searchApartmentByPrice: PropTypes.func,
+};
 
 export default SearchControls;
