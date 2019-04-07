@@ -302,7 +302,7 @@ img {
 
 .header-content {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: row;
   align-items: flex-end;
 }
@@ -315,9 +315,7 @@ img {
 
 /* The dropdown container */
 .dropdown {
-  float: left;
   overflow: hidden;
-  margin-left: 20px;
 }
 
 /* Dropdown button */
@@ -368,6 +366,10 @@ img {
   font-size: medium;
 }
 
+.detail-icon {
+  margin: 15px;
+}
+
 .go-home {
   text-align: center;
   display: block;
@@ -376,4 +378,26 @@ img {
 .loader {
   margin-top: 30%;
   text-align: center;
+}
+
+.search input[type=text] {
+  height: 35px;
+  width: 350px;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.submit {
+  height: 36px;
+  width: 40px;
+}
+
+.search-controls {
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-controls input {
+  padding: 15px;
+  font-size: 15px;
 }

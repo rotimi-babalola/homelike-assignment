@@ -1,6 +1,7 @@
 import HomeView from '../containers/HomeView';
 import ApartmentView from '../containers/ApartmentView';
-import LocationView from '../containers/LocationView';
+import ApartmentLocationView from '../containers/ApartmentLocationView';
+import SearchApartmentView from '../containers/SearchApartmentView';
 
 const routes = {
   default: [
@@ -19,8 +20,14 @@ const routes = {
     {
       exact: true,
       path: '/locations/:locationId',
-      component: LocationView,
+      component: ApartmentLocationView,
       id: 3,
+    },
+    {
+      exact: true,
+      path: '/search/:locationId',
+      component: SearchApartmentView,
+      id: 4,
     },
   ],
 };

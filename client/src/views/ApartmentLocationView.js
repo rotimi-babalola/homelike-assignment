@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import ApartmentTileView from './ApartmentTileView';
 
-class LocationView extends React.Component {
+class ApartmentLocationView extends React.Component {
   constructor(props) {
     super(props);
     this.getLocationName = this.getLocationName.bind(this);
@@ -61,6 +61,10 @@ class LocationView extends React.Component {
         </div>
       );
     }
+    if (this.props.error) {
+      return <h1>An error occurred getting apartments for this location</h1>;
+    }
+
     return (
       <React.Fragment>
         <div className="container-list container-lg clearfix">
@@ -81,12 +85,13 @@ class LocationView extends React.Component {
   }
 }
 
-LocationView.propTypes = {
+ApartmentLocationView.propTypes = {
   match: PropTypes.object.isRequired,
   fetchApartmentsListForLocation: PropTypes.func.isRequired,
   fetchLocations: PropTypes.func.isRequired,
   apartmentsForLocation: PropTypes.object.isRequired,
   locations: PropTypes.array,
+  error: PropTypes.object,
 };
 
-export default LocationView;
+export default withRouter(ApartmentLocationView);

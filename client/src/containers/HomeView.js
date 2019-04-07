@@ -5,6 +5,7 @@ import HomeView from '../views/HomeView';
 
 const mapStateToProps = state => ({
   apartmentsList: state.apartmentsList.apartments || {},
+  error: state.error,
 });
 
 const mapDispatchToProps = dispatch => ({

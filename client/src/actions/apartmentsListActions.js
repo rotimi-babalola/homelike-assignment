@@ -50,25 +50,24 @@ export const fetchApartmentsListForLocation = locationId => dispatch => {
   client
     .query({
       query: gql`
-        {
-          apartments(active: true, location: "${locationId}") {
-            items {
-              _id
-              owner {
-                _id
-                email
-              }
-              title
-              location {
-                title
-              }
-              size
-              price
-              amenities
-              images
+      {
+        apartments(active: true, location: "${locationId}") {
+          items {
+            _id
+            size
+            price
+            amenities
+            images
+            details {
+              rooms
+              bedrooms
+              floor
+              bathrooms
             }
+            services
           }
         }
+      }
       `,
     })
     .then(apartments => {

@@ -13,6 +13,7 @@
         "react/forbid-prop-types": "off",
         "react/destructuring-assignment": "off",
         "react/require-default-props": "off",
-        "operator-linebreak": "off"
+        "operator-linebreak": "off",
+        "no-restricted-syntax": "off"
     }
 }

@@ -4,6 +4,7 @@ import ApartmentView from '../views/ApartmentView';
 
 const mapStateToProps = state => ({
   apartment: state.apartmentItem.apartment || {},
+  error: state.error,
 });
 
 const mapDispatchToProps = dispatch => ({
