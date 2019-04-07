@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import { withRouter } from 'react-router-dom';
+import { isEmpty } from 'lodash';
 import SearchControls from './SearchControls';
 import ApartmentTileView from './ApartmentTileView';
 import atLeastOneKeyTrue from '../utils/atLeastOneKeyTrue';
@@ -25,6 +26,7 @@ class SearchApartmentView extends React.Component {
     this.filterApartments = this.filterApartments.bind(this);
     this.setAmenity = this.setAmenity.bind(this);
     this.setService = this.setService.bind(this);
+    this.setDetail = this.setDetail.bind(this);
   }
 
   componentDidMount() {
@@ -88,6 +90,12 @@ class SearchApartmentView extends React.Component {
     );
   }
 
+  setDetail(details) {
+    this.setState({ query: { ...this.state.query, details } }, () =>
+      this.filterApartments(this.state.query),
+    );
+  }
+
   filterApartments(query) {
     let filteredApartments = this.state.apartments.items;
     const arr = this.state.apartments.items.length
@@ -117,6 +125,16 @@ class SearchApartmentView extends React.Component {
       filteredApartments = arr.filter(apartment => {
         for (const service of apartment.services) {
           if (service.includes(query.service)) {
+            return true;
+          }
+        }
+        return false;
+      });
+    }
+    if (!isEmpty(query.details) && filteredApartments.length) {
+      filteredApartments = arr.filter(apartment => {
+        for (const detail in query.details) {
+          if (apartment.details[detail] === query.details[detail]) {
             return true;
           }
         }
@@ -181,6 +199,7 @@ class SearchApartmentView extends React.Component {
           setSize={this.setSize}
           setAmenity={this.setAmenity}
           setService={this.setService}
+          setDetail={this.setDetail}
         />
         <div className="container-list container-lg clearfix">
           <h1

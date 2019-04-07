@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Dropdown = props => (
-  <div className="dropdown" style={props.style}>
+  <div className="dropdown" style={props.dropDownStyle}>
     <button type="button" className="dropbtn">
       {props.title}
       <i className="fa fa-caret-down" />
     </button>
-    <div className="dropdown-content">{props.children}</div>
+    <div className="dropdown-content" style={props.contentStyle}>
+      {props.children}
+    </div>
   </div>
 );
 
@@ -19,5 +21,6 @@ Dropdown.propTypes = {
     PropTypes.node,
   ]),
   title: PropTypes.string,
-  style: PropTypes.object,
+  dropDownStyle: PropTypes.object,
+  contentStyle: PropTypes.object,
 };
