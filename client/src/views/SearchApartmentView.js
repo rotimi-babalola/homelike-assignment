@@ -1,3 +1,4 @@
+/* eslint-disable react/no-access-state-in-setstate */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
@@ -17,9 +18,9 @@ class SearchApartmentView extends React.Component {
     };
 
     this.getLocationName = this.getLocationName.bind(this);
-    this.searchByPrice = this.searchByPrice.bind(this);
+    this.setPrice = this.setPrice.bind(this);
     this.renderResults = this.renderResults.bind(this);
-    this.searchBySize = this.searchBySize.bind(this);
+    this.setSize = this.setSize.bind(this);
     this.filterApartments = this.filterApartments.bind(this);
   }
 
@@ -47,13 +48,13 @@ class SearchApartmentView extends React.Component {
     return currentLocation.title;
   }
 
-  searchByPrice(price) {
+  setPrice(price) {
     this.setState({ query: { ...this.state.query, price } }, () =>
       this.filterApartments(this.state.query),
     );
   }
 
-  searchBySize(size) {
+  setSize(size) {
     this.setState({ query: { ...this.state.query, size } }, () =>
       this.filterApartments(this.state.query),
     );
@@ -122,10 +123,7 @@ class SearchApartmentView extends React.Component {
     return (
       <div>
         <h1 style={{ marginLeft: '20px' }}>Search Page</h1>
-        <SearchControls
-          searchApartmentByPrice={this.searchByPrice}
-          searchApartmentBySize={this.searchBySize}
-        />
+        <SearchControls setPrice={this.setPrice} setSize={this.setSize} />
         <div className="container-list container-lg clearfix">
           <h1>{`Search apartments in  ${this.getLocationName()}`}</h1>
           <div className="col-8 float-left">{this.renderResults()}</div>

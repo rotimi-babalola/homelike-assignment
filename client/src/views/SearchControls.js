@@ -17,7 +17,7 @@ const SearchControls = props => (
       placeholder="Enter Price"
       min="0"
       size="100"
-      onChange={evt => props.searchApartmentByPrice(evt.target.value)}
+      onChange={evt => props.setPrice(evt.target.value)}
     />
     <input
       type="number"
@@ -25,7 +25,7 @@ const SearchControls = props => (
       id=""
       placeholder="Enter Size"
       min="0"
-      onChange={evt => props.searchApartmentBySize(evt.target.value)}
+      onChange={evt => props.setSize(evt.target.value)}
     />
     <input type="text" name="" id="" placeholder="Enter amenities" />
     <input type="text" name="" id="" placeholder="Enter services" />
@@ -51,8 +51,8 @@ const SearchControls = props => (
 );
 
 SearchControls.propTypes = {
-  searchApartmentByPrice: PropTypes.func,
-  searchApartmentBySize: PropTypes.func,
+  setPrice: PropTypes.func,
+  setSize: PropTypes.func,
 };
 
 export default SearchControls;
