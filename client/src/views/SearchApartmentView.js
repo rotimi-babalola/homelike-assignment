@@ -24,6 +24,7 @@ class SearchApartmentView extends React.Component {
     this.setSize = this.setSize.bind(this);
     this.filterApartments = this.filterApartments.bind(this);
     this.setAmenity = this.setAmenity.bind(this);
+    this.setService = this.setService.bind(this);
   }
 
   componentDidMount() {
@@ -81,26 +82,41 @@ class SearchApartmentView extends React.Component {
     );
   }
 
+  setService(service) {
+    this.setState({ query: { ...this.state.query, service } }, () =>
+      this.filterApartments(this.state.query),
+    );
+  }
+
   filterApartments(query) {
     let filteredApartments = this.state.apartments.items;
     const arr = this.state.apartments.items.length
       ? this.state.apartments.items
       : this.props.apartmentsForLocation.items;
-    if (query.price) {
+    if (query.price && filteredApartments.length) {
       filteredApartments = arr.filter(
         apartment => Number(query.price) <= apartment.price,
       );
     }
-    if (query.size) {
+    if (query.size && filteredApartments.length) {
       filteredApartments = arr.filter(
         apartment => Number(query.size) <= apartment.size,
       );
     }
-    if (query.amenity) {
+    if (query.amenity && filteredApartments.length) {
       filteredApartments = arr.filter(apartment => {
-        // eslint-disable-next-line no-restricted-syntax
         for (const amenity of apartment.amenities) {
           if (amenity.includes(query.amenity)) {
+            return true;
+          }
+        }
+        return false;
+      });
+    }
+    if (query.service && filteredApartments.length) {
+      filteredApartments = arr.filter(apartment => {
+        for (const service of apartment.services) {
+          if (service.includes(query.service)) {
             return true;
           }
         }
@@ -164,6 +180,7 @@ class SearchApartmentView extends React.Component {
           setPrice={this.setPrice}
           setSize={this.setSize}
           setAmenity={this.setAmenity}
+          setService={this.setService}
         />
         <div className="container-list container-lg clearfix">
           <h1

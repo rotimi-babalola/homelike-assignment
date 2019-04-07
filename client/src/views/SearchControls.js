@@ -36,6 +36,7 @@ const SearchControls = props => (
       name="services"
       id="services"
       placeholder="Enter services"
+      onChange={evt => props.setService(evt.target.value)}
     />
     <Dropdown
       title="Details"
@@ -68,6 +69,7 @@ SearchControls.propTypes = {
   setPrice: PropTypes.func,
   setSize: PropTypes.func,
   setAmenity: PropTypes.func,
+  setService: PropTypes.func,
 };
 
 export default SearchControls;
