@@ -381,13 +381,14 @@ img {
 }
 
 .search input[type=text] {
-  height: 30px;
-  width: 250px;
-  font-size: 20px;
+  height: 35px;
+  width: 350px;
+  font-size: 12px;
+  padding: 10px;
 }
 
 .submit {
-  height: 30px;
+  height: 36px;
   width: 40px;
 }
 
