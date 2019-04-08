@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import { withRouter } from 'react-router-dom';
-import { isEmpty } from 'lodash';
+import { isEmpty, uniq } from 'lodash';
 import SearchControls from './SearchControls';
 import ApartmentTileView from './ApartmentTileView';
 import atLeastOneKeyTrue from '../utils/atLeastOneKeyTrue';
@@ -136,14 +136,20 @@ class SearchApartmentView extends React.Component {
       atLeastOneKeyTrue(query.details) &&
       filteredApartments.length
     ) {
-      filteredApartments = arr.filter(apartment => {
+      const res = [];
+      arr.forEach(apartment => {
+        const matchArray = [];
+        // eslint-disable-next-line guard-for-in
         for (const detail in query.details) {
-          if (apartment.details[detail] === query.details[detail]) {
-            return true;
-          }
+          matchArray.push(apartment.details[detail] === query.details[detail]);
         }
-        return false;
+        // checks that all elemnts are truthy
+        const isAllMatchArrayTruthy = matchArray.every(el => el);
+        if (isAllMatchArrayTruthy) {
+          res.push(apartment);
+        }
       });
+      filteredApartments = uniq(res);
     }
     this.setState({
       apartments: {
