@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { isEmpty, uniq } from 'lodash';
 import SearchControls from './SearchControls';
 import ApartmentTileView from './ApartmentTileView';
@@ -225,6 +225,9 @@ class SearchApartmentView extends React.Component {
             {this.renderResults()}
           </div>
         </div>
+        <Link to="/" className="go-home">
+          Go home
+        </Link>
       </div>
     );
   }

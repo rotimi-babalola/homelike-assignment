@@ -9,8 +9,8 @@ const Header = props => {
   // eslint-disable-next-line consistent-return
   const search = searchQuery => {
     // check location in state to ensure it's valid
-    const foundLocation = props.locations.filter(
-      location => location.title.toLowerCase() === searchQuery.toLowerCase(),
+    const foundLocation = props.locations.filter(location =>
+      location.title.toLowerCase().includes(searchQuery.toLowerCase()),
     );
     if (foundLocation.length === 0) {
       return alert("We don't have data for apartments in this location");
