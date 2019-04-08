@@ -1,14 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { uniqueId } from 'lodash';
 
 export default class ApartmentAmentityView extends React.Component {
   render() {
-    let {apartment, limit = 3} = this.props;
-    let amentities = [];
-    apartment.amenities.map((item, index) => {
+    const { apartment, limit = 3 } = this.props;
+    const amentities = [];
+    apartment.amenities.forEach((item, index) => {
       if (index < limit) {
-        amentities.push(<span className="_1h9l4w0vvX6d56ZnJ3NLod"><i></i><span>{item}</span></span>);
+        amentities.push(
+          <span className="_1h9l4w0vvX6d56ZnJ3NLod" key={uniqueId()}>
+            <i />
+            <span>{item}</span>
+          </span>,
+        );
       }
     });
-    return amentities
+    return amentities;
   }
 }
+
+ApartmentAmentityView.propTypes = {
+  apartment: PropTypes.object.isRequired,
+  limit: PropTypes.string,
+};
