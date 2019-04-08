@@ -16,7 +16,7 @@ const Header = props => {
       return alert("We don't have data for apartments in this location");
     }
     const locationId = foundLocation[0]._id;
-    props.history.push(`/search/${locationId}`);
+    props.history.push(`/search/${locationId}?query=${searchQuery}`);
   };
 
   return (
