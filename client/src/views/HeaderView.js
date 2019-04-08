@@ -13,6 +13,7 @@ const Header = props => {
       location.title.toLowerCase().includes(searchQuery.toLowerCase()),
     );
     if (foundLocation.length === 0) {
+      // Not ideal but can be used for now :)
       return alert("We don't have data for apartments in this location");
     }
     const locationId = foundLocation[0]._id;
