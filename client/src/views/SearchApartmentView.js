@@ -138,16 +138,14 @@ class SearchApartmentView extends React.Component {
     ) {
       const res = [];
       arr.forEach(apartment => {
-        let match = false;
-        // const
+        const matchArray = [];
+        // eslint-disable-next-line guard-for-in
         for (const detail in query.details) {
-          if (apartment.details[detail] === query.details[detail]) {
-            match = true;
-          } else {
-            match = false;
-          }
+          matchArray.push(apartment.details[detail] === query.details[detail]);
         }
-        if (match) {
+        // checks that all elemnts are truthy
+        const isAllMatchArrayTruthy = matchArray.every(el => el);
+        if (isAllMatchArrayTruthy) {
           res.push(apartment);
         }
       });
